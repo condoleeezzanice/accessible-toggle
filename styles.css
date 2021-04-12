@@ -85,3 +85,9 @@
     background-color: #fff; /* 4 */
     transition: inherit;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .Toggle__display {
+      transition-duration: 0ms;
+    }
+  }
