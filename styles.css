@@ -126,4 +126,14 @@
    */
   .Toggle__input:checked + .Toggle__display::before {
     transform: translate(100%, -50%); /* 1 */
-  } 
+  }
+  
+  /**
+ * 1. When the input is disabled, tweak the toggle styles so it looks dimmed 
+ *    with less sharp colors, softer opacity and a relevant cursor.
+ */
+.Toggle__input:disabled + .Toggle__display {
+    opacity: 0.6; /* 1 */
+    filter: grayscale(40%); /* 1 */
+    cursor: not-allowed; /* 1 */
+  }
