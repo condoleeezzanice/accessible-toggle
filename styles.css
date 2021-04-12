@@ -102,3 +102,12 @@
     outline: 1px auto -webkit-focus-ring-color; /* 1 */
   }
   
+/**
+ * 1. When the toggle is interacted with with a mouse click (and therefore
+ *    the focus does not have to be ‘visible’ as per browsers heuristics),
+ *    remove the focus outline. This is the native checkbox’s behaviour where
+ *    the focus is not visible when clicking it.
+ */
+.Toggle__input:focus:not(:focus-visible) + .Toggle__display {
+    outline: 0; /* 1 */
+  }
