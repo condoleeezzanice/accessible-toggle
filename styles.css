@@ -137,3 +137,18 @@
     filter: grayscale(40%); /* 1 */
     cursor: not-allowed; /* 1 */
   }
+
+  /**
+ * 1. Flip the original position of the unchecked toggle in RTL.
+ */
+[dir='rtl'] .Toggle__display::before {
+    left: auto; /* 1 */
+    right: var(--offset); /* 1 */
+  }
+  
+  /**
+   * 1. Move the handle in the correct direction in RTL.
+   */
+  [dir='rtl'] .Toggle__input:checked + .Toggle__display::before {
+    transform: translate(-100%, -50%); /* 1 */
+  }
