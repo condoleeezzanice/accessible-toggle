@@ -91,3 +91,14 @@
       transition-duration: 0ms;
     }
   }
+
+/**
+ * 1. When the input is focused, provide the display the default outline
+ *    styles from the browser to mimic a native control. This can be
+ *    customised to have a custom focus outline.
+ */
+.Toggle__input:focus + .Toggle__display {
+    outline: 1px dotted #212121; /* 1 */
+    outline: 1px auto -webkit-focus-ring-color; /* 1 */
+  }
+  
