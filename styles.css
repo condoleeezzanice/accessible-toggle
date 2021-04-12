@@ -192,3 +192,28 @@ button.Toggle {
   .Toggle:focus {
     outline: 0; /* 1 */
   }
+
+  + .Toggle:focus .Toggle__display,
+.Toggle__input:focus + .Toggle__display {
+  /* … */
+}
+
++ .Toggle:focus:not(:focus-visible) .Toggle__display,
+.Toggle__input:focus:not(:focus-visible) + .Toggle__display {
+  /* … */
+}
+
++ .Toggle[aria-pressed="true"] .Toggle__display::before,
+.Toggle__input:checked + .Toggle__display::before {
+  /* … */
+}
+
++ .Toggle[disabled] .Toggle__display,
+.Toggle__input:disabled + .Toggle__display {
+  /* … */
+}
+
++ [dir="rtl"] .Toggle[aria-pressed="true"] + .Toggle__display::before,
+[dir="rtl"] .Toggle__input:checked + .Toggle__display::before {
+  /* … */
+}
