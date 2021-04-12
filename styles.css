@@ -17,3 +17,71 @@
     position: relative; /* 3 */
     gap: 1ch; /* 4 */
   }
+
+  /**
+ * 1. Vertically center the icons and space them evenly in the available 
+ *    horizontal space, essentially giving something like: [ ✔ ✗ ]
+ * 2. Size the display according to the size of the handle. `box-sizing`
+ *    could use `border-box` but the border would have to be considered
+ *    in the `width` computation. Either way works.
+ * 3. For the toggle to be visible in Windows High-Contrast Mode, we apply a
+ *    thin semi-transparent (or fully transparent) border.
+ *    Kind thanks to Adrian Roselli for the tip:
+ *    https://twitter.com/aardrian/status/1379786724222631938?s=20
+ * 4. Grant a position context for the pseudo-element making the handle.
+ * 5. Give a pill-like shape with rounded corners, regardless of the size.
+ * 6. The default state is considered unchecked, hence why this pale red is
+ *    used as a background color.
+ */
+.Toggle__display {
+    --offset: 0.25em;
+    --diameter: 1.8em;
+  
+    display: inline-flex; /* 1 */
+    align-items: center; /* 1 */
+    justify-content: space-around; /* 1 */
+  
+    width: calc(var(--diameter) * 2 + var(--offset) * 2); /* 2 */
+    height: calc(var(--diameter) + var(--offset) * 2); /* 2 */
+    box-sizing: content-box; /* 2 */
+  
+    border: 0.1em solid rgb(0 0 0 / 0.2); /* 3 */
+  
+    position: relative; /* 4 */
+    border-radius: 100vw; /* 5 */
+    background-color: #fbe4e2; /* 6 */
+  
+    transition: 250ms;
+    cursor: pointer;
+  }
+  
+  /**
+   * 1. Size the round handle according to the diameter custom property.
+   * 2. For the handle to be visible in Windows High-Contrast Mode, we apply a
+   *    thin semi-transparent (or fully transparent) border.
+   *    Kind thanks to Adrian Roselli for the tip:
+   *    https://twitter.com/aardrian/status/1379786724222631938?s=20
+   * 3. Absolutely position the handle on top of the icons, vertically centered
+   *    within the container and offset by the spacing amount on the left.
+   * 4. Give the handle a solid background to hide the icon underneath. This
+   *    could be dark in a dark mode theme, as long as it’s solid.
+   */
+  .Toggle__display::before {
+    content: '';
+  
+    width: var(--diameter); /* 1 */
+    height: var(--diameter); /* 1 */
+    border-radius: 50%; /* 1 */
+  
+    box-sizing: border-box; /* 2 */
+    border: 0.1 solid rgb(0 0 0 / 0.2); /* 2 */
+  
+    position: absolute; /* 3 */
+    z-index: 2; /* 3 */
+    top: 50%; /* 3 */
+    left: var(--offset); /* 3 */
+    transform: translate(0, -50%); /* 3 */
+  
+    background-color: #fff; /* 4 */
+    transition: inherit;
+  }
