@@ -174,3 +174,21 @@
   .Toggle__icon--checkmark {
     color: #1fb978;
   }
+
+  /**
+ * 1. Reset default <button> styles.
+ */
+button.Toggle {
+    border: 0; /* 1 */
+    padding: 0; /* 1 */
+    background: transparent; /* 1 */
+    font: inherit; /* 1 */
+  }
+  
+  /**
+   * 1. The focus styles are applied on the toggle instead of the container, so
+   *    the default focus outline can be safely removed.
+   */
+  .Toggle:focus {
+    outline: 0; /* 1 */
+  }
